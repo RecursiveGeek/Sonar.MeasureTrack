@@ -1,18 +1,33 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sonar.MeasureTrack.Models
 {
+    [Index(nameof(SailNumber), IsUnique = true)]
     public class Measurement
     {
+        [Key]
         public long MeasurementId { get; set; }
 
-        public string Country { get; set; }
+        public long? OwnerId { get; set; }
+
+        [Required]
         public int SailNumber { get; set; }
+
+        [Required]
         public string Builder { get; set; }
+
+        [Required]
         public string SerialNumber { get; set; }
-        public string Status {  get; set; }
-        public DateTime CreationDate { get; set; }
+
+        [Required]
+        public string Status { get; set; } = "Unapproved";
+
+        [Required]
+        public DateTime CreationDate { get; set; } = DateTime.Now;
+
         public DateTime? IssueDate { get; set; }
         public DateTime? MeasurementDate { get; set; }
         public string Measurer { get; set; }
