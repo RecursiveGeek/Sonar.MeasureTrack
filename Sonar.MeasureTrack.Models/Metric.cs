@@ -10,7 +10,7 @@ namespace Sonar.MeasureTrack.Models
         public bool IsActive { get; set; } = true;
 
         [Required]
-        public int SectionId { get; set; }
+        public long SectionId { get; set; }
 
         [Required]
         public string SectionName { get; set; }
